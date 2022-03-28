@@ -1,0 +1,9 @@
+black
+coverage
+Django==4.0.1
+django-dotenv
+djangorestframework>=3.13.1
+pip-tools
+psycopg2-binary
+pytest
+pytest-django
