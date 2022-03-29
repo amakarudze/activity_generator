@@ -51,6 +51,7 @@ jobs:
           DATABASE_USER: postgres
           DATABASE_PASSWORD: postgres
           DATABASE_NAME: activities
+          DATABASE_HOST: localhost
 
       - name: Run Tests
         run: |
@@ -59,3 +60,4 @@ jobs:
           DATABASE_USER: postgres
           DATABASE_PASSWORD: postgres
           DATABASE_NAME: activities
+          DATABASE_HOST: localhost
