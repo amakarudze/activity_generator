@@ -10,10 +10,10 @@ def create_user(**params):
 @pytest.fixture
 def user2():
     payload = {
-      'email': 'testuser@test.com',
-      'first_name': 'Test',
-      'last_name': 'User2',
-      'password': 'Pass1234D'
+        "email": "testuser@test.com",
+        "first_name": "Test",
+        "last_name": "User2",
+        "password": "Pass1234D",
     }
     return payload
 
@@ -21,10 +21,10 @@ def user2():
 @pytest.fixture
 def user3():
     payload = {
-      'email': 'user@test.com',
-      'first_name': 'Test',
-      'last_name': 'User',
-      'password': 'Pass1234D'
+        "email": "user@test.com",
+        "first_name": "Test",
+        "last_name": "User",
+        "password": "Pass1234D",
     }
     return payload
 
@@ -32,9 +32,9 @@ def user3():
 @pytest.fixture
 def user4():
     payload = {
-      'email': 'test@test.com',
-      'first_name': 'Test',
-      'last_name': 'User4',
-      'password': 'Pass'
+        "email": "test@test.com",
+        "first_name": "Test",
+        "last_name": "User4",
+        "password": "Pass",
     }
     return payload

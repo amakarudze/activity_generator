@@ -1,5 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import (
+    AbstractBaseUser,
+    BaseUserManager,
+    PermissionsMixin,
+)
 from django.forms import ValidationError
 
 
@@ -9,7 +13,7 @@ class UserManager(BaseUserManager):
     def create_user(self, email, first_name, last_name, password):
         """Create a new user."""
         if not email:
-            raise ValidationError('A user must have an email address.')
+            raise ValidationError("A user must have an email address.")
         email = self.normalize_email(email)
         user = self.model(email=email, first_name=first_name, last_name=last_name)
         user.set_password(password)
@@ -33,11 +37,11 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name']
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["first_name", "last_name"]
 
     def get_full_name(self):
-        return f'{self.first_name} {self.last_name}'
+        return f"{self.first_name} {self.last_name}"
 
     def get_short_name(self):
         return self.first_name
