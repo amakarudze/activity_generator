@@ -12,11 +12,11 @@ jobs:
 
     services:
       postgres:
-        image: postgres:10.8
+        image: postgres:11
         env:
-          DATABASE_USER: postgres
-          DATABASE_PASSWORD: postgres
-          DATABASE_NAME: activities
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: github_actions
         ports:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
@@ -47,15 +47,7 @@ jobs:
         run: |
           python manage.py migrate
 
-        env:
-          DATABASE_USER: postgres
-          DATABASE_PASSWORD: postgres
-          DATABASE_HOST: localhost
-
       - name: Run Tests
         run: |
           coverage run pytest
-        env:
-          DATABASE_USER: postgres
-          DATABASE_PASSWORD: postgres
-          DATABASE_HOST: localhost
+    
