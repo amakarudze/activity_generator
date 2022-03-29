@@ -40,7 +40,6 @@ jobs:
         coverage run -m pytest
         coverage xml
       env:
-        DATABASE_NAME: activities
         DATABASE_HOST: localhost
         DATABASE_PASSWORD: postgres
         DATABASE_USER: postgres
