@@ -4,8 +4,8 @@ from django.urls import reverse
 from rest_framework import status
 
 CREATE_USER_URL = reverse('accounts:create')
-TOKEN_URL = reverse('accounts:token')
-ME_URL = reverse('accounts:me')
+# TOKEN_URL = reverse('accounts:token')
+# ME_URL = reverse('accounts:me')
 
 
 def test_create_user_success(user2, client):
@@ -14,7 +14,7 @@ def test_create_user_success(user2, client):
     response = client.post(CREATE_USER_URL, payload)
     assert response.status_code == status.HTTP_201_CREATED
     user = get_user_model().objects.get(**response.data)
-    assert user.checkpassword(payload['password'])
+    assert user.check_password(payload['password'])
 
   
 def test_user_exists(client, user, user3):

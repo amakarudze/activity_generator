@@ -11,8 +11,9 @@ def create_user(**params):
 def user2():
     payload = {
       'email': 'testuser@test.com',
-      'password': 'Pass1234D',
-      'name': 'Test User2'
+      'first_name': 'Test',
+      'last_name': 'User2',
+      'password': 'Pass1234D'
     }
     return payload
 
@@ -21,8 +22,9 @@ def user2():
 def user3():
     payload = {
       'email': 'user@test.com',
-      'password': 'Pass1234D',
-      'name': 'Test User'
+      'first_name': 'Test',
+      'last_name': 'User',
+      'password': 'Pass1234D'
     }
     return payload
 
@@ -31,7 +33,8 @@ def user3():
 def user4():
     payload = {
       'email': 'test@test.com',
-      'password': 'Pass',
-      'name': 'Test User'
+      'first_name': 'Test',
+      'last_name': 'User4',
+      'password': 'Pass'
     }
     return payload
