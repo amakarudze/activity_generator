@@ -46,6 +46,3 @@ jobs:
         DATABASE_USER: postgres
     - name: Upload Coverage to Codecov
       uses: codecov/codecov-action@v2
-
-codecov:
-  token: 72c61e3f-74c8-4e17-b924-d54c93bd4fe0ß
