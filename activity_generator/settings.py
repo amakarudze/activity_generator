@@ -108,7 +108,6 @@ if os.environ.get("GITHUB_WORKFLOW"):
             "PORT": "5432",
         }
     }
-    env_files = ".env_test"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
