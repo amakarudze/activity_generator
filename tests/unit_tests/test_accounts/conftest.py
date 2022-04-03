@@ -38,3 +38,27 @@ def user4():
         "password": "Pass",
     }
     return payload
+
+
+@pytest.fixture
+def create_token():
+    payload = {"email": "user@test.com", "password": "testpass123"}
+    return payload
+
+
+@pytest.fixture
+def token_invalid_credentials():
+    payload = {"email": "user@test.com", "password": "Testpass123"}
+    return payload
+
+
+@pytest.fixture
+def token_no_user():
+    payload = {"email": "test@test.com", "password": "pass1234"}
+    return payload
+
+
+@pytest.fixture
+def token_missing_field():
+    payload = {"email": "user@test.com", "password": ""}
+    return payload

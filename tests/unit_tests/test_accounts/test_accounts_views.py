@@ -4,8 +4,8 @@ from django.urls import reverse
 from rest_framework import status
 
 CREATE_USER_URL = reverse("accounts:create")
-# TOKEN_URL = reverse('accounts:token')
-# ME_URL = reverse('accounts:me')
+TOKEN_URL = reverse("accounts:token")
+ME_URL = reverse("accounts:me")
 
 
 def test_create_user_success(user2, client):
@@ -31,3 +31,26 @@ def test_password_too_short(client, user4):
 
     user_exists = get_user_model().objects.filter(email=payload["email"]).exists()
     assert user_exists is False
+
+
+def test_create_token_for_user(client, user, create_token):
+    payload = create_token
+    response = client.post(TOKEN_URL, payload)
+    assert "token" in response.data
+    assert response.status_code == status.HTTP_200_OK
+
+
+def test_create_token_invalid_credentials(client, user, token_invalid_credentials):
+    pass
+
+
+def test_create_token_no_user(client, token_no_user):
+    pass
+
+
+def test_create_token_missing_field(client, user, token_missing_field):
+    pass
+
+
+def test_retrieve_user_unauthorized(client):
+    pass

@@ -1,2 +1,10 @@
+source: .
+branch: True
 ignore:
-  - "*/tests/*”
+  - */tests/*
+  - */management/*
+  - */migrations/*
+  - venv/*
+  - activity_generator/wsgi.py
+  - activity_generator/asgi.py
+  - manage.py
