@@ -62,3 +62,8 @@ def token_no_user():
 def token_missing_field():
     payload = {"email": "user@test.com", "password": ""}
     return payload
+
+
+@pytest.fixture
+def test_user(db, user3):
+    return create_user(**user3)
