@@ -67,3 +67,9 @@ def token_missing_field():
 @pytest.fixture
 def test_user(db, user3):
     return create_user(**user3)
+
+
+@pytest.fixture
+def update_user():
+    payload = {"first_name": "Jane", "last_name": "Doe", "password": "Test#1234"}
+    return payload
