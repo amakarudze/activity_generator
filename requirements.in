@@ -9,3 +9,5 @@ psycopg2-binary
 pytest
 pytest-django
 pytest-dotenv
+pytest-factoryboy
+pytest-mock
