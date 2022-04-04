@@ -5,7 +5,7 @@ from rest_framework import status
 
 CREATE_USER_URL = reverse("accounts:create")
 TOKEN_URL = reverse("accounts:token")
-ME_URL = reverse("accounts:me")
+# ME_URL = reverse("accounts:me")
 
 
 def test_create_user_success(user2, client):
@@ -41,16 +41,28 @@ def test_create_token_for_user(client, user, create_token):
 
 
 def test_create_token_invalid_credentials(client, user, token_invalid_credentials):
-    pass
+    payload = token_invalid_credentials
+    response = client.post(TOKEN_URL, payload)
+    assert "token" not in response.data
+    assert response.status_code == status.HTTP_400_BAD_REQUEST
 
 
 def test_create_token_no_user(client, token_no_user):
-    pass
+    payload = token_no_user
+    response = client.post(TOKEN_URL, payload)
+    assert "token" not in response.data
+    assert response.status_code == status.HTTP_400_BAD_REQUEST
 
 
 def test_create_token_missing_field(client, user, token_missing_field):
-    pass
+    payload = token_missing_field
+    response = client.post(TOKEN_URL, payload)
+    assert "token" not in response.data
+    assert response.status_code == status.HTTP_400_BAD_REQUEST
 
 
+"""
 def test_retrieve_user_unauthorized(client):
-    pass
+    response = client.get(ME_URL)
+    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+"""
