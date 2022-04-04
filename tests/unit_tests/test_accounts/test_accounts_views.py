@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
+import pytest
 from rest_framework import status
 
 CREATE_USER_URL = reverse("accounts:create")
@@ -8,6 +9,7 @@ TOKEN_URL = reverse("accounts:token")
 ME_URL = reverse("accounts:me")
 
 
+@pytest.mark.unit
 def test_create_user_success(user2, client):
     """Test create user with valid payload."""
     payload = user2
@@ -17,6 +19,7 @@ def test_create_user_success(user2, client):
     assert user.check_password(payload["password"])
 
 
+@pytest.mark.unit
 def test_user_exists(client, user, user3):
     """Test create a user that already exists fails."""
     payload = user3
@@ -24,6 +27,7 @@ def test_user_exists(client, user, user3):
     assert response.status_code == status.HTTP_400_BAD_REQUEST
 
 
+@pytest.mark.unit
 def test_password_too_short(client, user4):
     payload = user4
     response = client.post(CREATE_USER_URL, payload)
@@ -33,6 +37,7 @@ def test_password_too_short(client, user4):
     assert user_exists is False
 
 
+@pytest.mark.unit
 def test_create_token_for_user(client, user, create_token):
     payload = create_token
     response = client.post(TOKEN_URL, payload)
@@ -40,6 +45,7 @@ def test_create_token_for_user(client, user, create_token):
     assert response.status_code == status.HTTP_200_OK
 
 
+@pytest.mark.unit
 def test_create_token_invalid_credentials(client, user, token_invalid_credentials):
     payload = token_invalid_credentials
     response = client.post(TOKEN_URL, payload)
@@ -47,6 +53,7 @@ def test_create_token_invalid_credentials(client, user, token_invalid_credential
     assert response.status_code == status.HTTP_400_BAD_REQUEST
 
 
+@pytest.mark.unit
 def test_create_token_no_user(client, token_no_user):
     payload = token_no_user
     response = client.post(TOKEN_URL, payload)
@@ -54,6 +61,7 @@ def test_create_token_no_user(client, token_no_user):
     assert response.status_code == status.HTTP_400_BAD_REQUEST
 
 
+@pytest.mark.unit
 def test_create_token_missing_field(client, user, token_missing_field):
     payload = token_missing_field
     response = client.post(TOKEN_URL, payload)
@@ -61,11 +69,13 @@ def test_create_token_missing_field(client, user, token_missing_field):
     assert response.status_code == status.HTTP_400_BAD_REQUEST
 
 
+@pytest.mark.unit
 def test_retrieve_user_unauthorized(client):
     response = client.get(ME_URL)
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
 
+@pytest.mark.unit
 def test_retrieve_profile_success(user, user_client):
     response = user_client.get(ME_URL)
     assert response.status_code == status.HTTP_200_OK
@@ -76,11 +86,13 @@ def test_retrieve_profile_success(user, user_client):
     }
 
 
+@pytest.mark.unit
 def test_post_me_not_allowed(user, user_client):
     response = user_client.post(ME_URL, {})
     assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
 
 
+@pytest.mark.unit
 def test_update_user_profile(update_user, user, user_client):
     payload = update_user
     response = user_client.patch(ME_URL, payload)
