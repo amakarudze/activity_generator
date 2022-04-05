@@ -1,7 +1,6 @@
-import email
-from rest_framework.test import APIClient
-
 import pytest
+
+from rest_framework.test import APIClient
 
 
 @pytest.fixture(autouse=True)
@@ -47,10 +46,4 @@ def client():
 @pytest.fixture
 def user_client(db, client, user):
     client.force_authenticate(user=user)
-    return client
-
-
-@pytest.fixture
-def user1_client(db, client, user1):
-    client.force_authenticate(user=user1)
     return client
