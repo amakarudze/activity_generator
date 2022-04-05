@@ -18,7 +18,7 @@ def test_serialized_data(mocker):
     valid_serialized_data = factory.build(dict, FACTORY_CLASS=UserFactory)
 
     serializer = UserSerializer(data=valid_serialized_data)
-    assert serializer.is_valid()
+    assert serializer.is_valid(raise_exception=True)
     assert serializer.errors == {}
 
 
