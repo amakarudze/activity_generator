@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 
 from accounts.models import User
@@ -18,6 +19,9 @@ class Activity(models.Model):
     name = models.CharField(max_length=255)
     nature = models.CharField(max_length=255)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = "activities"
 
     def __str__(self):
         return f"{self.user} - {self.name}"

@@ -58,6 +58,8 @@ To add an activity, you first need to create tags. You can do so my making a `PO
 
 To add an activity, make a `POST` request to`http://127.0.0.1:8000/activities/` with a payload that has `name`, `nature` and `tag`. The value of the tag should be a primary key (integer).
 
+Alternatively, you can log in with your superuser account in the API's admin section using the URL `http://127.0.0.1:8000/admin/` and add tags and activities from there.
+
 ### Getting activities to do when bored
 To get suggestions of activities you can do when you're bored, you can send a `GET` request to `http://127.0.0.1/activities/` and get a list of all activities you have saved. To get activities with a particular `name` or `nature`, make `GET` requests with the following parameters respectively:
 * `http://127.0.0.1/activities/?name=hiking`
