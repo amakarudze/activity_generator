@@ -143,3 +143,27 @@ def test_full_update_activity(activity2, full_update, user_client):
     assert activity2.tag.pk == payload["tag"]
     assert activity2.nature == payload["nature"]
     assert response.status_code == status.HTTP_200_OK
+
+
+@pytest.mark.unit
+def test_get_activities_with_name_parameter(activity, activity2, user_client):
+    name = "hiking"
+    response = user_client.get(f"/activities/?name={name}")
+
+    activities = Activity.objects.filter(name__icontains=name).order_by("-id")
+    serializer = ActivitySerializer(activities, many=True)
+
+    assert response.status_code == status.HTTP_200_OK
+    assert response.data == serializer.data
+
+
+@pytest.mark.unit
+def test_get_activities_with_nature_parameter(activity, activity2, user, user_client):
+    nature = "relaxing"
+    response = user_client.get(f"/activities/?nature={nature}")
+
+    activities = Activity.objects.filter(nature__icontains=nature).order_by("-id")
+    serializer = ActivitySerializer(activities, many=True)
+
+    assert response.status_code == status.HTTP_200_OK
+    assert response.data == serializer.data

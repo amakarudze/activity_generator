@@ -45,7 +45,18 @@ class ActivityViewSet(
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
+        nature = self.request.query_params.get("nature")
+        name = self.request.query_params.get("name")
         queryset = self.queryset
+
+        if nature:
+            return queryset.filter(
+                user=self.request.user, nature__icontains=nature
+            ).order_by("-id")
+        if name:
+            return queryset.filter(
+                user=self.request.user, name__icontains=name
+            ).order_by("-id")
         return queryset.filter(user=self.request.user).order_by("-id")
 
     def perform_create(self, serializer):
