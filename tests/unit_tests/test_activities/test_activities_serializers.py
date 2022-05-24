@@ -12,14 +12,14 @@ def test_serialize_activity_model():
     assert serializer.data
 
 
-@pytest.mark.skip(reason="not sure why user and tag are none.")
-def test_activity_serialized_data(mocker):
+@pytest.mark.unit
+def test_activity_serialized_data(user, tag):
     t = ActivityFactory.build()
     valid_serialized_data = {
-        "user": t.user,
+        "user": user.pk,
         "name": t.name,
         "nature": t.nature,
-        "tag": t.tag,
+        "tag": tag.pk,
     }
     serializer = ActivitySerializer(data=valid_serialized_data)
 
