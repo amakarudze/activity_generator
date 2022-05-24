@@ -4,7 +4,6 @@ Django==4.0.1
 factory-boy
 python-dotenv
 djangorestframework>=3.13.1
-pip-tools
 psycopg2-binary
 pytest
 pytest-django
