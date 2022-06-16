@@ -55,7 +55,7 @@ payload = {
 ```
 
 ### Authentication
-This API uses Django Rest Framework's Token Authentication. To create a token, make a `POST` request to `http://127.0.0.1:8000/accounts/token/` with the `email` and `password` as the payload or just enter them in the form in the given URL to get a token. You can use this token to authenticate in the browser using ModHeader or include the token in your request in Postman.
+This API uses Django Rest Framework's Token Authentication. To create a token, make a `POST` request to `http://127.0.0.1:8000/accounts/token/` with the `email` and `password` as the payload or just enter them in the form in the given URL to get a token. You can use this token to authenticate in the browser using [ModHeader](https://modheader.com/) or include the token in your request in [Postman](https://www.postman.com/).
 
 ### Adding Tags and Activities
 To add an activity, you first need to create tags. You can do so my making a `POST` request to `http://127.0.0.8000/tags/` with a payload that only requires a `name` value.
