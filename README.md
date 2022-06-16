@@ -23,9 +23,13 @@ This API requires has been developed and tested on:
 ### Testing
 To test using automated tests, run:
 
-```coverage run -m pytest```
+`coverage run -m pytest`
 
-To test manually, open the URL you get from running `python manage.py runserver` and create a user, get a token and then add it to your browser's [ModHeader](https://modheader.com/) extension or use [Postman](https://www.postman.com/).
+To test manually, open the URL you get from running 
+
+`python manage.py runserver` 
+
+and create a user, get a token and then add it to your browser's [ModHeader](https://modheader.com/) extension or use [Postman](https://www.postman.com/).
 
 
 ## Usage
