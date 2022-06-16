@@ -30,7 +30,7 @@ To test manually, open the URL you get from running `python manage.py runserver`
 
 ## Usage
 ### Creating an account
-To use this API, you need to create a user account for yourself by either using the `python manage.py createsuperuser` command or visiting `http://127.0.0.1:8000/accounts/create/` url or making a `POST` request to the URL `http://127.0.0.1:/accounts/create/`in `Postman`, assuming your server is running on port `8000` which is the usual Django server port.
+To use this API, you need to create a user account for yourself by either using the `python manage.py createsuperuser` command or visiting `http://127.0.0.1:8000/accounts/create/` url or making a `POST` request to the URL `http://127.0.0.1:/accounts/create/`in [`Postman`](https://www.postman.com/), assuming your server is running on port `8000` which is the usual Django server port.
 
 The values required in the payload are:
 * email
